@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class cardWeather extends StatefulWidget {
-  cardWeather({
-    super.key,
-    required this.countryName,
-    required this.date,
-    required this.avgTemp,
-    required this.maxTemp,
-    required this.minTemp,
-    required this.weatherState,
-  });
+  cardWeather(
+      {super.key,
+      required this.countryName,
+      required this.date,
+      required this.avgTemp,
+      required this.maxTemp,
+      required this.minTemp,
+      required this.weatherState,
+      required this.icon});
 
   String countryName;
   String date;
@@ -18,6 +18,7 @@ class cardWeather extends StatefulWidget {
   double maxTemp;
   double minTemp;
   String weatherState;
+  String icon;
 
   @override
   State<cardWeather> createState() => _cardWeatherState();
@@ -28,12 +29,20 @@ class _cardWeatherState extends State<cardWeather> {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(15),
-      width: 370,
-      height: 300,
+      margin: const EdgeInsets.all(15),
+      height: MediaQuery.of(context).size.height / 2,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: const Color.fromARGB(144, 255, 255, 255)),
-      child: Column(children: [
+        boxShadow: const [
+          BoxShadow(
+              color: Color.fromARGB(185, 0, 0, 0),
+              blurRadius: 20,
+              offset: Offset(0, 5))
+        ],
+        borderRadius: BorderRadius.circular(20),
+        color: Colors.white,
+      ),
+      child:
+          Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
         Padding(
           padding: const EdgeInsets.all(2.0),
           child: Text(
@@ -63,9 +72,17 @@ class _cardWeatherState extends State<cardWeather> {
                 style: GoogleFonts.montserrat(fontSize: 70),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(left: 40),
-              child: Icon(Icons.cloud),
+            Padding(
+              padding: const EdgeInsets.only(left: 40),
+              child: Image.network(
+                widget.icon,
+                errorBuilder: (context, exception, stackTrace) {
+                  return const Icon(
+                    Icons.cloud,
+                    size: 65,
+                  );
+                },
+              ),
             ),
             //
             //
@@ -75,13 +92,19 @@ class _cardWeatherState extends State<cardWeather> {
         //
         ///
         //
-        const SizedBox(height: 20),
+        const SizedBox(height: 50),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
               padding: const EdgeInsets.only(left: 15),
-              child: Text(widget.weatherState),
+              child: Text(
+                widget.weatherState,
+                style: GoogleFonts.montserrat(
+                    fontSize: 25,
+                    color: Colors.black,
+                    fontWeight: FontWeight.normal),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 15),
@@ -94,7 +117,9 @@ class _cardWeatherState extends State<cardWeather> {
               ),
             ),
           ],
-        )
+        ),
+
+        const SizedBox(height: 25),
       ]),
     );
   }

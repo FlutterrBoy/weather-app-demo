@@ -20,7 +20,7 @@ class _SearchPageState extends State<SearchPage> {
       decoration: const BoxDecoration(
           image: DecorationImage(
               image: AssetImage("assets/clouds.jpg"),
-              opacity: 0.9,
+              opacity: 0.7,
               fit: BoxFit.cover)),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -37,7 +37,7 @@ class _SearchPageState extends State<SearchPage> {
         body: SingleChildScrollView(
           child: Center(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(height: 100),
                 SizedBox(
@@ -62,7 +62,7 @@ class _SearchPageState extends State<SearchPage> {
                 ),
 
                 //
-                const SizedBox(height: 15),
+                const SizedBox(height: 30),
 
                 //
                 const Padding(
@@ -78,6 +78,7 @@ class _SearchPageState extends State<SearchPage> {
                 //
                 //
                 //
+
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 5),

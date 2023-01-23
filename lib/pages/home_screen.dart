@@ -14,61 +14,70 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     WeatherModel? weatherData =
         Provider.of<WeatherProvider>(context).weatherData;
-    return Scaffold(
-        backgroundColor: const Color.fromARGB(255, 106, 155, 201),
-        appBar: AppBar(
-          elevation: 0,
+    return Container(
+      decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("assets/clouds.jpg"),
+              opacity: 1,
+              fit: BoxFit.cover)),
+      child: Scaffold(
           backgroundColor: Colors.transparent,
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 6.0),
-              child: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.info_outline_rounded,
-                    size: 20,
-                  )),
-            ),
-          ],
-          //
-          //
-
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Icon(
-                Icons.location_on_outlined,
-              ),
-              Text(
-                weatherData!.countryName,
-                style: GoogleFonts.montserrat(fontSize: 16),
+          appBar: AppBar(
+            elevation: 0,
+            backgroundColor: Colors.transparent,
+            actions: [
+              Padding(
+                padding: const EdgeInsets.only(right: 6.0),
+                child: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.info_outline_rounded,
+                      size: 20,
+                    )),
               ),
             ],
+            //
+            //
+
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(
+                  Icons.location_on_outlined,
+                ),
+                Text(
+                  weatherData!.countryName,
+                  style: GoogleFonts.montserrat(fontSize: 16),
+                ),
+              ],
+            ),
+            //
+            //
+            leading: IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: const Icon(
+                  Icons.search,
+                  size: 20,
+                )),
           ),
-          //
-          //
-          leading: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: const Icon(
-                Icons.search,
-                size: 20,
-              )),
-        ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Center(
-              child: cardWeather(
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Center(
+                child: cardWeather(
                   countryName: weatherData.countryName,
                   date: weatherData.date,
                   avgTemp: weatherData.avgTemp,
                   maxTemp: weatherData.maxTemp,
                   minTemp: weatherData.minTemp,
-                  weatherState: weatherData.weatherState),
-            )
-          ],
-        ));
+                  weatherState: weatherData.weatherState,
+                  icon: weatherData.icon,
+                ),
+              )
+            ],
+          )),
+    );
   }
 }
