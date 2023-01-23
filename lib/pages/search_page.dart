@@ -19,8 +19,8 @@ class _SearchPageState extends State<SearchPage> {
     return Container(
       decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/bg2.png"),
-              opacity: 0.7,
+              image: AssetImage("assets/clouds.jpg"),
+              opacity: 0.9,
               fit: BoxFit.cover)),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -52,24 +52,15 @@ class _SearchPageState extends State<SearchPage> {
                 Padding(
                   padding: const EdgeInsets.all(2.0),
                   child: Text(
-                    "Discover the Weather",
+                    "Discover the Weather\nin Your City",
+                    textAlign: TextAlign.center,
                     style: GoogleFonts.montserrat(
-                      fontSize: 30,
-                      color: const Color(0xffE2EAF3),
-                    ),
+                        fontSize: 30,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
 
-                Padding(
-                  padding: const EdgeInsets.all(2.0),
-                  child: Text(
-                    "in Your City",
-                    style: GoogleFonts.montserrat(
-                      fontSize: 30,
-                      color: const Color(0xffE2EAF3),
-                    ),
-                  ),
-                ),
                 //
                 const SizedBox(height: 15),
 
@@ -79,7 +70,7 @@ class _SearchPageState extends State<SearchPage> {
                   child: Text(
                     "Get to know your weather",
                     style: TextStyle(
-                      color: Color.fromARGB(255, 255, 255, 255),
+                      color: Colors.white,
                     ),
                   ),
                 ),
@@ -156,7 +147,7 @@ class _SearchPageState extends State<SearchPage> {
                         "FlutterBoy",
                         style: GoogleFonts.montserrat(
                             fontSize: 15,
-                            color: const Color(0xffE2EAF3),
+                            color: Colors.white,
                             fontWeight: FontWeight.bold),
                       ),
                     ],
